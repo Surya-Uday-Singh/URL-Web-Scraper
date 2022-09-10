@@ -8,9 +8,9 @@ const { response } = require('express');
 let PORT = 8000
 
 const app = express();
-const url = 'https://www.npmjs.com/package/cheerio'
+const urlmain = 'https://www.theguardian.com/international'
 
-axios(url)
+axios(urlmain)
       .then(response =>{
         const html = response.data
         let $= cheerio.load(html)
@@ -19,10 +19,10 @@ axios(url)
 
         $('a',html).each(function(){
             
-            const url1 = $(this).attr('href')
+            const url = $(this).attr('href')
             
             arr.push({
-               url1
+               url
             })
         })
         console.dir(arr, {'maxArrayLength': null});
